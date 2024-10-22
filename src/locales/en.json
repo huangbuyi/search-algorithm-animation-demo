@@ -65,5 +65,11 @@
     "continue": "Searching...，explored {0}",
     "found": "Found a solution，explored {0}",
     "noSolution": "No solution found，explored {0}"
+  },
+  "errors": {
+    "multipleStarts": "There can be only one start in the maze.",
+    "multipleGoals": "There can be only one goal in the maze.",
+    "noStart": "There can't be no start in the maze.",
+    "noGoal": "There can't be no goal in the maze."
   }
 }

@@ -65,5 +65,11 @@
     "continue": "正在搜索，已探索 {0}",
     "found": "找到解决方案，共计探索 {0}",
     "noSolution": "未找到解决方案，共计探索 {0}"
+  },
+  "errors": {
+    "multipleStarts": "只能有一个起点",
+    "multipleGoals": "只能有一个终点",
+    "noStart": "缺少起点",
+    "noGoal": "缺少终点"
   }
 }

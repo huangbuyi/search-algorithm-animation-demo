@@ -242,12 +242,12 @@ class Maze {
         const cell = this.maze[i][j];
         if (cell.type === MazeCellType.Start) {
           if (start !== null) {
-            throw new Error('只能有一个起点');
+            throw new Error(t('errors.multipleStarts'));
           }
           start = [i, j];
         } else if (cell.type === MazeCellType.Goal) {
           if (goal !== null) {
-            throw new Error('只能有一个终点');
+            throw new Error(t('errors.multipleGoals'));
           }
           goal = [i, j];
         }
@@ -255,11 +255,11 @@ class Maze {
     }
 
     if (!start) {
-      throw new Error('没有起点');
+      throw new Error(t('error.noStart'));
     }
 
     if (!goal) {
-      throw new Error('没有终点');
+      throw new Error(t('error.noGoal'));
     }
 
     this._start = start;
