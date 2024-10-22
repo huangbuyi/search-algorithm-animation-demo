@@ -978,6 +978,10 @@ function shuffle(array: Array<any>) {
   font-weight: bold;
 }
 
+.cell.solution-path .cell-start, .cell.solution-path .cell-goal {
+  color: #ffffff;
+}
+
 .aside-title {
   color: #6699ff;
   margin: 8px 0 4px;
