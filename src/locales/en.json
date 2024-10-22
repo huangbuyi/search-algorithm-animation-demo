@@ -1,0 +1,69 @@
+{
+  "title": "Search Algorithm Animation Demo",
+  "titles": {
+    "newMaze": "New Maze",
+    "presetMazes": "Preset Mazes"
+  },
+  "buttons": {
+    "start": "Start",
+    "resume": "Resume",
+    "pause": "Pause",
+    "next": "Next",
+    "reset": "Reset",
+    "cancelDraw": "Cancel Draw",
+    "import": "Import",
+    "export": "Export",
+    "newEmptyMaze": "New Empty Maze",
+    "genRandomMaze": "Generate Random Maze"
+  },
+  "algorithms": {
+    "desc": "Algorithms Description",
+    "uninformedSearch": "Uninformed Search",
+    "informedSearch": "Informed Search",
+    "greedyBestFirstSearch": "Greedy Best-Frist Search",
+    "greedyBestFirstSearchDesc": "Greedy Best-First Search is a heuristic search algorithm used primarily for traversing graphs and finding paths. It is a type of Best-First Search that utilizes a heuristic function to choose the most promising node to expand next.",
+    "aStarSearch": "A* Search",
+    "aStarSearchDesc": "A* (A-star) search is a popular algorithm used for pathfinding and graph traversal, which is widely employed in fields such as robotics, video game development, and automated planning systems. A* combines the advantages of both uniform-cost search and greedy best-first search to efficiently find the optimal path from a start node to a goal node.",
+    "bfs": "Breadth-First Search (BFS)",
+    "bfsDesc": "Breadth-First Search (BFS) is an algorithm used to traverse or search through tree or graph data structures. BFS starts at the root node (or an arbitrary starting node) and explores the neighbor nodes first, before moving on to the next level of neighbors.",
+    "dfs": "Depth-First Search (DFS)",
+    "dfsDesc": "Depth-First Search (DFS) is a fundamental algorithm used for traversing or searching tree or graph data structures. The key idea behind DFS is that it starts at the root node (or any arbitrary node chosen as the root) and explores as far as possible along each branch before backtracking."
+  },
+  "presetMazes": {
+    "default": "Default",
+    "longAndShort": "Long And Short",
+    "deepestRoute": "Deepest Route",
+    "broadest": "Broadest",
+    "1024": "1024"
+  },
+  "legend": {
+    "start": "Start",
+    "goal": "Goal",
+    "wall": "Wall",
+    "unexplored": "Unexplored",
+    "explored": "Explored",
+    "frontier": "Frontier",
+    "solutionPath": "SolutionPath"
+  },
+  "labels": {
+    "cellWidth": "Cell Width",
+    "cellHeight": "Height",
+    "brush": "Brush",
+    "timeInterval": "Time Interval(ms)",
+    "mazeWidth": "Width",
+    "mazeHeight": "Height"
+  },
+  "brushes": {
+    "none": "None",
+    "wall": "Wall",
+    "space": "Space",
+    "start": "Start",
+    "goal": "Goal"
+  },
+  "solutionTips": {
+    "pending": "Click the button on the right to start the presentation",
+    "continue": "Searching...，explored {0}",
+    "found": "Found a solution，explored {0}",
+    "noSolution": "No solution found，explored {0}"
+  }
+}

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { reactive, Ref, ref } from 'vue';
 import { PriorityQueue } from './priorityQueue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 enum Action {
   Up = 0,
@@ -463,31 +466,31 @@ interface AlgorithmItem {
 
 const algorithms: [string, AlgorithmItem[]][] = [
   [
-    '非启发式搜索', 
+    t('algorithms.uninformedSearch'), 
     [
       {
-        name: '深度优先搜索',
-        description: '深度优先搜索（Depth-First Search，简称DFS）是一种用于遍历或搜索树结构或图的算法。它从根节点开始（在图的情况下可以是任意选定的一个节点），尽可能深入地沿着每条分支探索，然后回溯。',
+        name: t('algorithms.dfs'),
+        description: t('algorithms.dfsDesc'),
         frontier: StackFrontier
       },
       {
-        name: '广度优先搜索',
-        description: '广度优先搜索（Breadth-First Search，简称BFS）是一种用于遍历或搜索树或图的算法。与深度优先搜索不同，BFS从根节点开始（如果是图，则从一个指定的源节点开始），然后首先探索所有与给定节点直接相连的节点（也就是邻居节点），然后再移动到下一层级的节点。这种层级式的探索方式保证了如果存在一条从初始节点到目标节点的路径，那么这条路径将是其中最短的一条。',
+        name: t('algorithms.bfs'),
+        description: t('algorithms.bfsDesc'),
         frontier: QueueFrontier
       },
     ]
   ],
   [
-    '启发式搜索',
+    t('algorithms.informedSearch'), 
     [
       {
-        name: '贪婪最佳优先搜索',
-        description: '贪婪最佳优先搜索（Greedy Best-First Search）仅依赖于启发式函数 h(n) 来选择下一个要扩展的节点，而忽略了实际路径的成本。它总是选择看起来距离目标最近的节点进行扩展',
+        name: t('algorithms.greedyBestFirstSearch'),
+        description: t('algorithms.greedyBestFirstSearchDesc'),
         frontier: GreedBestFrontier
       },
       {
-        name: 'A* 搜索',
-        description: 'A*（A-Star）算法结合了统一成本搜索（UCS）和启发式信息。它使用一个评价函数 f(n) = g(n) + h(n) ，其中 g(n) 表示从起始节点到节点 n 的实际代价， h(n) 是一个启发式函数，估计从节点 n 到目标节点的成本。',
+        name: t('algorithms.aStarSearch'),
+        description: t('algorithms.aStarSearchDesc'),
         frontier: AStarFrontier
       }
     ]
@@ -502,11 +505,11 @@ function onAlgorithmChange(algorithmItem: AlgorithmItem) {
 }
 
 const presetMazes: [string, string][] = [
-  ['默认', 'mazes/default.txt'],
-  ['长短双线', 'mazes/long-and-short.txt'],
-  ['最深线路', 'mazes/deepest-route.txt'],
-  ['广袤无垠', 'mazes/broadest.txt'],
-  ['1024', 'mazes/1024.txt'],
+  [t('presetMazes.default'), 'mazes/default.txt'],
+  [t('presetMazes.longAndShort'), 'mazes/long-and-short.txt'],
+  [t('presetMazes.deepestRoute'), 'mazes/deepest-route.txt'],
+  [t('presetMazes.broadest'), 'mazes/broadest.txt'],
+  [t('presetMazes.1024'), 'mazes/1024.txt'],
 ]
 
 loadMaze(presetMazes[0][1]);
@@ -557,11 +560,11 @@ function drawCell(cell: MazeCell) {
 }
 
 const legendItems: [string, string][] = [
-  ['#202020', '墙体'],
-  ['#dfdfdf', '未探索'],
-  ['#808080', '已探索'],
-  ['#ff9966', '搜索队列'],
-  ['#6699ff', '解决方案路径'],
+  ['#202020', t('legend.wall')],
+  ['#dfdfdf', t('legend.unexplored')],
+  ['#808080', t('legend.explored')],
+  ['#ff9966', t('legend.frontier')],
+  ['#6699ff', t('legend.solutionPath')],
 ]
 
 function downloadTxt(text: string) {
@@ -674,36 +677,44 @@ function shuffle(array: Array<any>) {
       <div class="maze-editor">
         <div class="input-item-group">
           <div class="input-item">
-            <label>单元格宽</label>
+            <label>{{ t('labels.cellWidth') }}</label>
             <input v-model="cellWidth" type="number" min="1" />
           </div>
           <div class="input-item">
-            <label>高</label>
+            <label>{{ t('labels.cellHeight') }}</label>
             <input v-model="cellHeight" type="number" min="1" />
           </div>
         </div>
         <div class="input-item-group">
           <div class="input-item">
-            <label>笔刷</label>
+            <label>{{ t('labels.brush') }}</label>
             <select v-model="brush" :disabled="demoState !== DemoState.Ready">
-              <option label="无" :value="null"></option>
-              <option label="空地" :value="MazeCellType.Space"></option>
-              <option label="墙" :value="MazeCellType.Wall"></option>
-              <option label="起点" :value="MazeCellType.Start"></option>
-              <option label="终点" :value="MazeCellType.Goal"></option>
+              <option :label="t('brushes.none')" :value="null"></option>
+              <option :label="t('brushes.space')" :value="MazeCellType.Space"></option>
+              <option :label="t('brushes.wall')" :value="MazeCellType.Wall"></option>
+              <option :label="t('brushes.start')" :value="MazeCellType.Start"></option>
+              <option :label="t('brushes.goal')" :value="MazeCellType.Goal"></option>
             </select>
           </div>
-          <button v-if="brush !== null" @click="brush = null">取消绘制</button>
+          <button v-if="brush !== null" @click="brush = null">{{ t('buttons.cancelDraw') }}</button>
+        </div>
+        <div class="input-item-group i18n">
+          <div class="input-item">
+            <label class="i18n-label"><img src="/icons/i18n.png" /></label>
+            <select v-model="$i18n.locale">
+              <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">{{ locale }}</option>
+            </select>
+          </div>
         </div>
         <div class="input-item-group button-list">
-          <button @click="importTemplate">导入</button>
-          <button @click="exportTemplate">导出</button>
+          <button @click="importTemplate">{{ t('buttons.import') }}</button>
+          <button @click="exportTemplate">{{ t('buttons.export') }}</button>
         </div>
       </div>
       <div class="maze-container">
         <div class="legend">
-          <div class="legend-item">A 起点</div>
-          <div class="legend-item">B 终点</div>
+          <div class="legend-item">A {{ t('legend.start') }}</div>
+          <div class="legend-item">B {{ t('legend.goal') }}</div>
           <div class="legend-item" v-for="[color, label] in legendItems">
             <div class="legend-item-color" :style="{ backgroundColor: color }"></div>
             <div class="legend-item-label">{{ label }}</div>
@@ -739,24 +750,24 @@ function shuffle(array: Array<any>) {
       </div>
       <div class="maze-controller">
         <div class="maze-state-description">
-          <div v-if="solutionType === SolutionType.Pending">点击右侧按钮开始演示</div>
-          <div v-if="solutionType === SolutionType.Continue">正在搜索，已探索 {{ numExplored }}</div>
-          <div v-else-if="solutionType === SolutionType.FoundSolution">找到解决方案，共计探索 {{ numExplored }}</div>
-          <div v-else-if="solutionType === SolutionType.NoSolution">找不到解决方案，共计探索 {{ numExplored }}</div>
+          <div v-if="solutionType === SolutionType.Pending"></div>
+          <div v-if="solutionType === SolutionType.Continue">{{ t('solutionTips.continue', [numExplored]) }}</div>
+          <div v-else-if="solutionType === SolutionType.FoundSolution">{{ t('solutionTips.found', [numExplored]) }}</div>
+          <div v-else-if="solutionType === SolutionType.NoSolution">{{ t('solutionTips.onSolution', [numExplored]) }}</div>
         </div>
         <div class="demo-controller">
           <div class="input-item">
-            <label>时间间隔</label>
+            <label>{{ t('labels.timeInterval') }}</label>
             <input v-model="timeInterval" type="number" min="0" />
           </div>
         </div>
         <div class="button-list">
-          <button v-if="demoState === DemoState.Ready" @click="start">开始</button>
-          <button v-if="demoState === DemoState.Paused" @click="resume">继续</button>
-          <button v-if="demoState === DemoState.Done" disabled @click="resume">继续</button>
-          <button v-if="demoState === DemoState.Running" @click="pause">暂停</button>
-          <button :disabled="demoState === DemoState.Running || demoState === DemoState.Done" @click="next">下一步</button>
-          <button @click="reset">重置</button>
+          <button v-if="demoState === DemoState.Ready" @click="start">{{ t('buttons.start') }}</button>
+          <button v-if="demoState === DemoState.Paused" @click="resume">{{ t('buttons.resume') }}</button>
+          <button v-if="demoState === DemoState.Done" disabled @click="resume">{{ t('buttons.resume') }}</button>
+          <button v-if="demoState === DemoState.Running" @click="pause">{{ t('buttons.pause') }}</button>
+          <button :disabled="demoState === DemoState.Running || demoState === DemoState.Done" @click="next">{{ t('buttons.next') }}</button>
+          <button @click="reset">{{ t('buttons.reset') }}</button>
         </div>
       </div>
     </div>
@@ -775,28 +786,28 @@ function shuffle(array: Array<any>) {
             <div>{{ item.name }}</div>
           </div>
         </div>
-        <div class="aside-title">算法描述</div>
+        <div class="aside-title">{{ t('algorithms.desc') }}</div>
         <div class="algorithm-description">{{ currAlgorithm.description }}</div>
       </div>
       <div>
-        <div class="aside-title">新建迷宫</div>
+        <div class="aside-title">{{ t('titles.newMaze') }}</div>
         <div class="input-item-group">
           <div class="input-item">
-            <label>宽</label>
+            <label>{{ t('labels.mazeWidth') }}</label>
             <input v-model="mazeWidth" type="number" min="1" />
           </div>
           <div class="input-item">
-            <label>高</label>
+            <label>{{ t('labels.mazeHeight') }}</label>
             <input v-model="mazeHeight" type="number" min="1" />
           </div>
         </div>
         <div class="gen-maze-buttons">
-          <button @click="loadEmptyMaze(mazeWidth, mazeHeight)">新建空迷宫</button>
-          <button @click="genDFSMaze(mazeWidth, mazeHeight)">生成随机迷宫</button>
+          <button @click="loadEmptyMaze(mazeWidth, mazeHeight)">{{ t('buttons.newEmptyMaze') }}</button>
+          <button @click="genDFSMaze(mazeWidth, mazeHeight)">{{ t('buttons.genRandomMaze') }}</button>
         </div>
       </div>
       <div>
-        <div class="aside-title">预设迷宫</div>
+        <div class="aside-title">{{ t('titles.presetMazes') }}</div>
         <div class="preset-mazes">
           <div
             v-for="item in presetMazes"
@@ -1022,6 +1033,16 @@ function shuffle(array: Array<any>) {
 }
 
 .input-item {
+  display: flex;
   margin-right: 12px;
+}
+
+.i18n-label {
+  display: flex;
+}
+
+.i18n-label img {
+  width: 20px;
+  height: 20px;
 }
 </style>

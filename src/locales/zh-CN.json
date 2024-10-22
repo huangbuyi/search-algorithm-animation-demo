@@ -1,0 +1,69 @@
+{
+  "title": "搜索算法动画演示",
+  "titles": {
+    "newMaze": "新建迷宫",
+    "presetMazes": "预设迷宫"
+  },
+  "buttons": {
+    "start": "开始",
+    "resume": "继续",
+    "pause": "暂停",
+    "next": "下一步",
+    "reset": "重置",
+    "cancelDraw": "取消绘制",
+    "import": "导入",
+    "export": "导出",
+    "newEmptyMaze": "新建空白迷宫",
+    "genRandomMaze": "随机生成迷宫"
+  },
+  "algorithms": {
+    "desc": "算法描述",
+    "uninformedSearch": "非启发式搜索",
+    "informedSearch": "启发式搜索",
+    "greedyBestFirstSearch": "贪婪最佳优先搜索",
+    "greedyBestFirstSearchDesc": "贪婪最佳优先搜索（Greedy Best-First Search）仅依赖于启发式函数 h(n) 来选择下一个要扩展的节点，而忽略了实际路径的成本。它总是选择看起来距离目标最近的节点进行扩展。",
+    "aStarSearch": "A* 搜索",
+    "aStarSearchDesc": "A*（A-Star）算法结合了统一成本搜索（UCS）和启发式信息。它使用一个评价函数 f(n) = g(n) + h(n) ，其中 g(n) 表示从起始节点到节点 n 的实际代价， h(n) 是一个启发式函数，估计从节点 n 到目标节点的成本。",
+    "bfs": "广度优先搜索",
+    "bfsDesc": "广度优先搜索（Breadth-First Search，简称BFS）是一种用于遍历或搜索树或图的算法。与深度优先搜索不同，BFS从根节点开始（如果是图，则从一个指定的源节点开始），然后首先探索所有与给定节点直接相连的节点（也就是邻居节点），然后再移动到下一层级的节点。这种层级式的探索方式保证了如果存在一条从初始节点到目标节点的路径，那么这条路径将是其中最短的一条。",
+    "dfs": "深度优先搜索",
+    "dfsDesc": "深度优先搜索（Depth-First Search，简称DFS）是一种用于遍历或搜索树结构或图的算法。它从根节点开始（在图的情况下可以是任意选定的一个节点），尽可能深入地沿着每条分支探索，然后回溯。"
+  },
+  "presetMazes": {
+    "default": "默认",
+    "longAndShort": "长短双线",
+    "deepestRoute": "最深线路",
+    "broadest": "广袤无垠",
+    "1024": "1024"
+  },
+  "legend": {
+    "start": "起点",
+    "goal": "终点",
+    "wall": "墙体",
+    "unexplored": "未探索",
+    "explored": "已探索",
+    "frontier": "边界",
+    "solutionPath": "解决方案路径"
+  },
+  "labels": {
+    "cellWidth": "单元格 宽",
+    "cellHeight": "高",
+    "brush": "笔刷",
+    "timeInterval": "时间间隔（毫秒）",
+    "mazeWidth": "迷宫宽",
+    "mazeHeight": "迷宫高"
+  },
+  "brushes": {
+    "none": "无",
+    "wall": "墙",
+    "space": "空地",
+    "start": "起点",
+    "goal": "终点"
+  },
+  "solutionTips": {
+    "pending": "点击右侧按钮开始演示",
+    "continue": "正在搜索，已探索 {0}",
+    "found": "找到解决方案，共计探索 {0}",
+    "noSolution": "未找到解决方案，共计探索 {0}"
+  }
+}
