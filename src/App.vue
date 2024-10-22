@@ -750,7 +750,7 @@ function shuffle(array: Array<any>) {
       </div>
       <div class="maze-controller">
         <div class="maze-state-description">
-          <div v-if="solutionType === SolutionType.Pending"></div>
+          <div v-if="solutionType === SolutionType.Pending">{{ t('solutionTips.pending', [numExplored]) }}</div>
           <div v-if="solutionType === SolutionType.Continue">{{ t('solutionTips.continue', [numExplored]) }}</div>
           <div v-else-if="solutionType === SolutionType.FoundSolution">{{ t('solutionTips.found', [numExplored]) }}</div>
           <div v-else-if="solutionType === SolutionType.NoSolution">{{ t('solutionTips.onSolution', [numExplored]) }}</div>
