@@ -510,6 +510,7 @@ const presetMazes: [string, string][] = [
   [t('presetMazes.deepestRoute'), 'mazes/deepest-route.txt'],
   [t('presetMazes.broadest'), 'mazes/broadest.txt'],
   [t('presetMazes.1024'), 'mazes/1024.txt'],
+  [t('presetMazes.cs50ai'), 'mazes/cs50ai.txt'],
 ]
 
 loadMaze(presetMazes[0][1]);

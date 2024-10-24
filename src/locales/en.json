@@ -34,7 +34,8 @@
     "longAndShort": "Long And Short",
     "deepestRoute": "Deepest Route",
     "broadest": "Broadest",
-    "1024": "1024"
+    "1024": "1024",
+    "cs50ai": "CS50AI"
   },
   "legend": {
     "start": "Start",

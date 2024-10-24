@@ -5,14 +5,11 @@ import App from './App.vue';
 import en from './locales/en.json';
 import zhCN from './locales/zh-CN.json';
 
-console.log(navigator.language);
-
 let locale = localStorage.getItem('locale');
 
 if (!locale) {
   locale = navigator.language === 'zh-CN' ? '中文（简体）' : 'English';
 }
-
 
 const i18n = createI18n({
   locale,
